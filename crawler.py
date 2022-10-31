@@ -54,27 +54,24 @@ def next_api_access(conn, options):
                 opt = int(input('Select an option: '))
                 if opt==0:
                     clear()
-                    data={'reponse':options, 'close':True}
+                    data={'response':options, 'close':True}
                     choice_loop=False
                 else:
                     choice=options[opt-1]
                     new_conn = f'{conn}{choice}'
                     next_option = rest_get(new_conn)
-                    data = {'reponse':next_api_access(new_conn, next_option), 'close':False}
-                    return data
+                    data = {'response':next_api_access(new_conn, next_option), 'close':False}
+                    return data['response']
             except ValueError:
                 print('Invalid option')
                 sleep(1)
-        
-    print(data)
-    if data['close']==True:
-        for key in data.keys():
-            if key
-
+    
+    return(data['response'])
 
 if __name__ == "__main__":
     conn = connection_inputs()
-
+    
     # access top layer of api
     top_options = rest_get(conn)
-    data = next_api_access(conn, top_options)
+    # need test for NMOS connection
+    d = next_api_access(conn, top_options)
