@@ -34,3 +34,14 @@ def rest_get(url):
         return getRequest.json()
     else:
         return getRequest
+
+# handle unknown dictionary values.  Returns first value
+def get_arb_value(dic):
+    try:
+        return next(iter(dic.values()))
+    except StopIteration:
+        return None
+
+# display
+def display(dict):
+    
